@@ -4,7 +4,7 @@
 
 
 from optparse import *
-from optparse import OptionParser, OptionGroup, Option
+from optparse import OptionParser, OptionGroup
 from optparse_mooi import CompactHelpFormatter, CompactColorHelpFormatter
 
 
@@ -14,23 +14,27 @@ via a fast differencing algorithm.\
 '''
 
 parser = OptionParser(
-    # formatter       = CompactHelpFormatter(
-    #     align_long_opts=True,
-    #     width = 80,
-    #     metavar_column = 17,
-    # ),
-
-    formatter       = CompactColorHelpFormatter(
-        align_long_opts = True,
-        metavar_column  = 17,
-        shopt_color   = 'white-bold',
-        lopt_color    = 'white-bold',
-        metavar_color = 'green-bold',
-        help_color    = 'red-bold',
-        option_colormap = {
-            ('--force', ): (None, None, None, 'red'),
-        }
+    formatter = CompactHelpFormatter(
+        align_long_opts=True,
+        width = 80,
+        metavar_column = 17,
     ),
+
+    # formatter = CompactColorHelpFormatter(
+    #     metavar_column = 17,
+    #     align_long_opts=True,
+    #     description_color = 'white',
+    #     heading_color = 'white-bold',
+    #     usage_color   = 'white-bold-underline',
+    #     shopt_color   = 'green-bold',
+    #     lopt_color    = 'green-bold',
+    #     metavar_color = 'white-bold',
+    #     help_color    = 'green',
+    #     option_colormap = {
+    #         '-B': ('white', 'white-bold',  'green-bold', 'red-bold'),
+    #         ('-f', '--to'): ('red-bold', 'red', 'white', 'blue-bold')
+    #     }
+    # ),
     description     = description,
     add_help_option = False
 )
@@ -53,12 +57,6 @@ o('-c', '--config',    action='store',      help='override git configuration set
 o('',   '--force',     action='store_true', help='allow actions that may lose annexed data'),
 
 o = remote_options.add_option
-o('-n', '--numcopies', action='store',      help='override default number of copies')
-o('',   '--trust',     action='store',      help='override trust setting')
-o('',   '--semitrust', action='store',      help='override trust setting back to default')
-o('',   '--untrust',   action='store',      help='override trust setting to untrusted')
-o('-i', '--in',        action='store',      help='skip files not present in remote')
-o('-x', '--exclude',   action='store',      help='skip files matching glob pattern')
 o('-I', '--include',   action='store',      help='don\'t skip files matching glob pattern')
 o('-C', '--copies',    action='store',      help='skip files with fewer copies')
 o('-B', '--inbackend', action='store',      help='skip files not using a key-value backend')

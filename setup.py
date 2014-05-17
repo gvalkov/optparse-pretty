@@ -4,6 +4,8 @@
 from setuptools import setup
 from optparse_mooi import __version__, __author__, __license__
 
+from os.path import abspath, dirname, join
+here = abspath(dirname(__file__))
 
 classifiers = (
     'Environment :: Console',
@@ -25,7 +27,7 @@ kw = {
     'name':              'optparse-pretty',
     'version':           __version__,
     'description':       'A more compact help formatter for optparse',
-    'long_description':  open('README.rst').read(),
+    'long_description':  open(join(here, 'README.rst')).read(),
     'author':            __author__,
     'author_email':      'georgi.t.valkov@gmail.com',
     'license':           __license__,
