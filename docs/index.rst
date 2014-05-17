@@ -208,4 +208,4 @@ This module is released under the terms of the `Revised BSD License`_.
 .. _optparse:              https://docs.python.org/3.4/library/optparse.html
 .. _argparse:              https://docs.python.org/3.4/library/argparse.html
 .. _`optparse_mooi.py`:    https://raw.githubusercontent.com/gvalkov/optparse-pretty/master/optparse_mooi.py
-.. _`example.py`:          https://github.com/gvalkov/optparse-pretty/master/example.py
+.. _`example.py`:          https://github.com/gvalkov/optparse-pretty/blob/master/example.py
