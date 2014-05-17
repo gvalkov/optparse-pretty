@@ -1,7 +1,10 @@
 *optparse-pretty*
 -----------------
 
-This module provides two help formatters classes for optparse_.
+This module provides two help formatters for optparse_. They provide
+terser and more customizable option formatting in comparison to the
+default help formatter. Refer to the documentation for examples and
+usage instructions.
 
 Documentation:
     http://optparse-pretty.readthedocs.org/en/latest/

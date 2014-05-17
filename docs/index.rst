@@ -1,9 +1,9 @@
 Introduction
 ============
 
-This module provides two help formatters classes for optparse_. They
-provide terser and more customizable option formatting in comparison
-to the default help formatter.
+This module provides two help formatters for optparse_. They provide
+terser and more customizable option formatting in comparison to the
+default help formatter.
 
 A CLI (see `example.py`_) using the default
 ``optparse.IndentedHelpFormatter`` looks like:
@@ -55,7 +55,7 @@ your project:
 Usage
 =====
 
-The simplest use case is::
+The most basic use case is::
 
     from optparse import OptionParser
     from optparse_mooi import CompactHelpFormatter, CompactColorHelpFormatter
@@ -64,8 +64,8 @@ The simplest use case is::
     parser = OptionParser(formatter=CompactColorHelpFormatter())
 
 
-The two help formatters take quite a few keyword arguments. The
-defaults are::
+The help formatters take the following keyword arguments. The defaults
+are::
 
     CompactHelpFormatter(
         metavar_format = ' <{}>',
@@ -90,7 +90,7 @@ defaults are::
     )
 
 ``CompactColorHelpFormatter`` also accepts all of
-``CompactHelpFormatter``'s keyword arguments.
+``CompactHelpFormatter``'s arguments.
 
 Several examples that demonstrate the effects of various options:
 
@@ -125,8 +125,8 @@ Several examples that demonstrate the effects of various options:
   >>> CompactHelpFormatter()
   -I, --include <include>      don't skip files matching glob pattern
 
-  >>> CompactHelpFormatter(option_separator=' ')
-  -I --include <include>      don't skip files matching glob pattern
+  >>> CompactHelpFormatter(option_separator='|')
+  -I|--include <include>      don't skip files matching glob pattern
 
 
 **align_long_opts**::
@@ -146,7 +146,7 @@ Several examples that demonstrate the effects of various options:
   -i, --in        <in>         skip files not present in remote
 
 
-Using the colorizing version of the ``CompactHelpFormatter``:
+Using the colorizing version of ``CompactHelpFormatter``:
 
 ::
 
@@ -168,36 +168,44 @@ Using the colorizing version of the ``CompactHelpFormatter``:
 
 ::
 
-   CompactColorHelpFormatter(option_colormap = {
-        '-B':           ('white', 'white-bold',  'green-bold', 'red-bold'),
-        ('-f', '--to'): ('red-bold', 'red', 'white', 'blue-bold'),
-        # you can use (None, None, None, 'red') if you just want to
-        # overwrite the help message color
+   CompactColorHelpFormatter(
+        option_colormap = {
+           ... # same options as above
+           '-B':           ('white', 'white-bold',  'green-bold', 'red-bold'),
+           ('-f', '--to'): ('red-bold', 'red', 'white', 'blue-bold'),
     })
 
 .. image:: img/color-some.png
    :align: center
 
+Keys are short or long opts, or a list of short or long opts. Values
+specify the color to be applied to the short flag, long flag, metavar
+and help message, in that order. Each of these can be ``None`` or a
+color specifier (e.g. ``"white-bold-underline"``)
 
 Please refer to the module's docstrings for more usage information.
+
+Note that ``CompactColorHelpFormatter`` is not very robust (it would
+be immeditiately evident if you had a look at its implementation). It
+also works only on ANSI capable terminals.
 
 Isn't optparse obsolete?
 ========================
 
 Even though optparse_ is no longer developed and has less features
 than argparse_, it is perfectly usable and quite practical. Some
-arguments for not feeling bad about still using optparse:
+arguments for not feeling bad about still using it:
 
  - It's simpler and shorter than argparse (1.7k vs 2.4k sloc).
 
  - It's easier to customize. I've tried writing similar help
    formatters for argparse and it was considerably less straightforward.
 
- - Optparse has been in the STL since version 2.3.
+ - Optparse has been in the STL since version 2.3 - argparse since 3.2.
 
 If you don't happen to need any of argparse's great features, optparse
-is a fine alternative.
-
+is a fine alternative (and so is getopt_, if you need even less
+features).
 
 License
 =======
@@ -209,3 +217,4 @@ This module is released under the terms of the `Revised BSD License`_.
 .. _argparse:              https://docs.python.org/3.4/library/argparse.html
 .. _`optparse_mooi.py`:    https://raw.githubusercontent.com/gvalkov/optparse-pretty/master/optparse_mooi.py
 .. _`example.py`:          https://github.com/gvalkov/optparse-pretty/blob/master/example.py
+.. _getopt:                https://docs.python.org/3.4/library/getopt.html
